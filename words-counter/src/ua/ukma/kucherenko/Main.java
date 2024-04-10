@@ -1,13 +1,12 @@
 package ua.ukma.kucherenko;
 
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the file path: ");
-        String filePath = scanner.nextLine();
-
+        if (args.length != 1) {
+            System.out.println("You should type in the name of the file to parse!");
+            return;
+        }
+        String filePath =  args[0];
         Dictionary dictionary = new Dictionary();
         dictionary.createDictionary(filePath);
         System.out.println("Word Frequencies:\n" + dictionary.getWordFrequencies());

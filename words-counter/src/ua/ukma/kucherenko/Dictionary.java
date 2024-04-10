@@ -35,9 +35,9 @@ public class Dictionary {
 
     public String getWordFrequencies() {
         StringBuilder stringBuilder = new StringBuilder();
-        for (Map.Entry<String, Integer> entry : wordCountMap.entrySet()) {
-            stringBuilder.append(entry.getKey()).append(": ").append(entry.getValue()).append("\n");
-        }
+        wordCountMap.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                .forEach(entry -> stringBuilder.append(entry.getKey()).append(": ").append(entry.getValue()).append("\n"));
         return stringBuilder.toString();
     }
 }
